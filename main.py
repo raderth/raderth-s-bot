@@ -35,7 +35,9 @@ async def on_ready():
               await msg1.delete()
               user = message.author
               role = discord.utils.get(user.guild.roles, name="Member")
+              accepted = discord.utils.get(user.guild.roles, name="accepted")
               await user.add_roles(role)
+              await user.remove_roles(accepted)
               links = client.get_channel(980187865629720636)
               success = 1
               messages_to_delete = await other_channel.history(limit=50).flatten()
